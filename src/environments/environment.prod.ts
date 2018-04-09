@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  defaultServerURL: 'localhost:8080',
+  defaultProductKey: '12345'
 };

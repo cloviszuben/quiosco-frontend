@@ -1,0 +1,7 @@
+{
+   "version": "api/heroes",
+   "user": "assets/textfile.txt",
+   "medias": [ {"id":1, "ordem":1, "nome": "teste1" },
+               {"id":2, "ordem":2, "nome": "teste2" }
+             ]
+}

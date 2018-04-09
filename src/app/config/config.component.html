@@ -1,0 +1,26 @@
+
+<div class="container">
+  <h1>Configuração</h1>
+  <form #configForm="ngForm" >
+    <div class="form-group">
+      <label for="serverURL">URL do Servidor</label>
+      <input type="text"  [(ngModel)]="config.serverURL" class="form-control" id="serverURL" name="serverURL" #serverURL="ngModel" required>
+      <div [hidden]="serverURL.valid || serverURL.pristine" class="alert alert-danger">
+           Campo requerido!
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="productKey">Chave do Produto</label>
+      <input type="text" [(ngModel)]="config.productKey" class="form-control" id="productKey" name="productKey" #productKey="ngModel" required>
+      <div [hidden]="productKey.valid || productKey.pristine" class="alert alert-danger">
+        Campo requerido!
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="!configForm.form.valid" class="btn btn-default" (click)="saveConfig()">Salva</button>
+    <button type="submit" class="btn btn-default" (click)="goBack()">Cancela</button>
+
+  </form>
+</div>
+
