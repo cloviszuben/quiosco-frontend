@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 
@@ -16,25 +16,32 @@ export class ConfigService {
 
   constructor(private messageService: MessageService) { }
   
-  getConfig(): Observable<Config> { 
+  config = new Config();
+  
+  loadConfig(): Observable<Config> { 
   
     this.messageService.add('ConfigService: fetched config');
-
-    var config = new Config();
-  
+ 
     var retrievedConfig = localStorage.getItem('quiosco-config');
 
     if (retrievedConfig != null) {
-          config = JSON.parse(retrievedConfig);
+          this.config = JSON.parse(retrievedConfig);
     } else {
-          config.productKey=environment.defaultProductKey;
-          config.serverURL=environment.defaultServerURL;
-          localStorage.setItem('quiosco-config', JSON.stringify(config));
+          this.config.productKey=environment.defaultProductKey;
+          this.config.serverURL=environment.defaultServerURL;
+          this.config.updateTimer=environment.defaultUpdateTimer;
+          this.config.lastUpdate=environment.defaultLastUpdate;
+          localStorage.setItem('quiosco-config', JSON.stringify(this.config));
     }
-    return of(config);
+    return of(this.config);
   }
 
   saveConfig(config: Config) {
     localStorage.setItem('quiosco-config', JSON.stringify(config));
   }
+
+  getConfig() {
+    return this.config;
+  }
+
 }

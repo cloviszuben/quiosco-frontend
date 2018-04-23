@@ -14,14 +14,16 @@ export class ConfigComponent implements OnInit{
 
   config: Config;
 
+  listaIntervalosAtualizacao = [ 0, 1, 5, 15, 30, 60, 720, 1440];
+
   constructor(private location: Location, private configService: ConfigService) {}
  
   ngOnInit() {
-    this.getConfig();
+    this.loadConfig();
   }
   
-  getConfig(): void {
-    this.configService.getConfig().subscribe((config) => this.config = config);
+  loadConfig(): void {
+    this.configService.loadConfig().subscribe((config) => this.config = config);
 
   }
 

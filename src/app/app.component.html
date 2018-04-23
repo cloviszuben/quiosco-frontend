@@ -9,11 +9,9 @@
   </mat-menu>
   <span>&nbsp;&nbsp;{{title}}</span>
   <span class="example-fill-remaining-space"></span>
-  <span>Carga:{{dataAtualizacao}}</span>
+  <span *ngIf="playlist && config.lastUpdate">Playlist: {{playlist.version}} - {{config.lastUpdate}}</span>  
 </mat-toolbar>
 
-
 <router-outlet></router-outlet>
-    
 <app-messages></app-messages>
   

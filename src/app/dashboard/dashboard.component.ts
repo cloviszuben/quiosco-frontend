@@ -8,6 +8,7 @@ import {DataSource} from '@angular/cdk/collections';
 
 import {MatTableModule} from "@angular/material/table"
 
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -20,19 +21,18 @@ export class DashboardComponent implements OnInit {
   dataSource = <Media[]> [];    
   
   playlist : Playlist;
-  error: any;
-
   headers: string[];
+  error: any;
 
   constructor(private playlistService: PlaylistService) { }
 
   ngOnInit() {
-    this.getPlaylist(); 
+    this.getSavedPlaylist(); 
   }
 
-  getPlaylist(): void {
+  getSavedPlaylist(): void {
     
-    this.playlistService.getPlaylist()
+    this.playlistService.getSavedPlaylist()
           .subscribe(resp => {
           
             const keys = resp.headers.keys();

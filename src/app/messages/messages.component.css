@@ -14,12 +14,14 @@ h2 {
   
   button.clear {
     font-family: Arial;
+    font-size: 20px;
     background-color: #eee;
     border: none;
-    padding: 5px 10px;
+    padding: 0px 5px;
     border-radius: 4px;
     cursor: pointer;
     cursor: hand;
+    margin-top: 20px;        
   }
   button:hover {
     background-color: #cfd8dc;
